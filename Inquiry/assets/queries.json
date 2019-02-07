@@ -1,0 +1,181 @@
+[
+  {
+    "name": "Most Popular Search Filters",
+    "action": "search",
+    "group": "filters"
+  },
+  {
+    "name": "Most Popular Search Keywords",
+    "action": "search",
+    "group": "keywords"
+  },
+  {
+    "name": "Most Searches Performed by User",
+    "action": "search",
+    "group": "user"
+  },
+  {
+    "name": "Most Documents Downloaded by User",
+    "action": "download",
+    "group": "user"
+  },
+  {
+    "name": "Page Views",
+    "action": "pageView",
+    "group": "subject",
+    "minCount": 2
+  },
+  {
+    "name": "Details Page Views by User",
+    "action": "pageView",
+    "group": "user",
+    "filters": ["subject:\\/show"]
+  },
+  {
+    "name": "Most Documents Downloaded",
+    "action": "download",
+    "group": "id",
+    "limit": 10,
+    "alias": "title"
+  },
+  {
+    "name": "Most Liked Documents",
+    "action": "like",
+    "group": "id",
+    "limit": 10,
+    "alias": "title"
+  },
+  {
+    "name": "Most Viewed Documents",
+    "action": "view",
+    "group": "id",
+    "limit": 10,
+    "alias": "title"
+  },
+  {
+    "name": "Unique Users",
+    "group": "user",
+    "limit": -1,
+    "minCount": 1,
+    "aggregate": "unique"
+  },
+  {
+    "name": "Authenticated Users",
+    "group": "user",
+    "limit": -1,
+    "minCount": 1,
+    "aggregate": "unique",
+    "filters": ["action:access"]
+  },
+  {
+    "name": "Documents Opened Externally",
+    "action": "openWith",
+    "group": "id",
+    "limit": 10,
+    "alias": "title"
+  },
+  {
+    "name": "Documents Added To Cart",
+    "action": "addToList",
+    "group": "id",
+    "limit": 10,
+    "alias": "title"
+  },
+  {
+    "name": "Most Cart Users",
+    "action": "addToList",
+    "group": "user",
+    "limit": 10
+  },
+  {
+    "name": "Most Popular Processing Tasks",
+    "action": "process",
+    "group": "metric",
+    "limit": 10,
+    "alias": "task"
+  },
+  {
+    "name": "Users Last Week",
+    "group": "user",
+    "limit": -1,
+    "minCount": 1,
+    "aggregate": "count",
+    "filters": ["timestamp:[NOW-7DAY/DAY TO NOW]"]
+  },
+  {
+    "name": "Users Last Month",
+    "group": "user",
+    "limit": -1,
+    "minCount": 1,
+    "aggregate": "count",
+    "filters": ["timestamp:[NOW-1MONTHS/MONTHS TO NOW]"]
+  },
+  {
+    "name": "Trending Keywords",
+    "group": "keywords",
+    "action": "search",
+    "limit": 10,
+    "filters": ["timestamp:[NOW-7DAY/DAY TO NOW]"]
+  },
+  {
+    "name": "Trending Filters",
+    "group": "filters",
+    "action": "search",
+    "limit": 10,
+    "filters": ["timestamp:[NOW-7DAY/DAY TO NOW]"]
+  },
+  {
+    "name": "Popular Places",
+    "group": "filters",
+    "action": "search",
+    "limit": 10,
+    "filters": ["filters:*place*"]
+  },
+  {
+    "name": "Most Popular Saved Searches",
+    "action": "saved-search",
+    "group": "subject",
+    "limit": 10,
+    "filters": ["metric:run"]
+  },
+  {
+    "name": "Top Users Running Saved Searches",
+    "action": "saved-search",
+    "group": "user",
+    "limit": 10,
+    "filters": ["metric:run"]
+  },
+  {
+    "name": "Top Groups Running Searches",
+    "action": "search-group",
+    "group": "metric",
+    "limit": 10
+  },
+  {
+    "name": "Searches Last Week",
+    "limit": -1,
+    "minCount": 1,
+    "count": true,
+    "aggregate": "count",
+    "filters": ["timestamp:[NOW-7DAY/DAY TO NOW]", "metric:time", "action:search"]
+  },
+  {
+    "name": "Searches Last Month",
+    "limit": -1,
+    "minCount": 1,
+    "count": true,
+    "aggregate": "count",
+    "filters": ["timestamp:[NOW-1MONTHS/MONTHS TO NOW]", "metric:time", "action:search"]
+  },
+  {
+    "name": "Searches Over Last 30 Days",
+    "action" : "search",
+    "limit": -1,
+    "minCount": 1,
+    "type": "series",
+    "unit": "DAY",
+    "gap": 1,
+    "size": 30,
+    "filters": ["timestamp:[NOW-1MONTHS/MONTHS TO NOW]", "metric:time", "action:search"]
+  }
+]
